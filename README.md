@@ -51,10 +51,9 @@ Json.obj()
 Then you can use this in your tests like this.
 ```java
     @Test
-    @LoadFixture(SampleFixture.class)
     public void sampleTest() {
         Result result = route(fakeRequest(GET, "/api/v1/sampleRoute"));
-        assertThat(result).is(JSON_SUCCESS);
+
         JsValue expected = Json.obj() 
         	.add("1", Json.arr() 
         		.add(17)
@@ -83,6 +82,8 @@ Then you can use this in your tests like this.
         	.add("total", Json.arr() 
         		.add(17)
         		.add(17).build()).build();
+
+        // Compare the objects
     }
 ```
 
