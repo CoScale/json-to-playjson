@@ -83,6 +83,8 @@ Then you can use this in your tests like this.
         	.add("total", Json.arr() 
         		.add(17)
         		.add(17).build()).build();
+
+       assertThat(contentAsJson(result)).isEqualTo(expected);
     }
 ```
 
