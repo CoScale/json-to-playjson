@@ -2,22 +2,22 @@
 Converts JSON to Play framework JSON (https://www.playframework.com/documentation/2.2.x/api/scala/index.html#play.api.libs.json.JsValue)
 
 ## Why we wrote this script?
-After developing any feature we need to write its backend tests, so we found ourselves spending too much time constructing the json for Play JSON. So this script converts a normal JSON to how you will write it in the tests using Play JSON.
+After developing any feature we need to write its backend tests, so we found ourselves spending too much time constructing the JSON for Play JSON. So this script converts normal JSON to how you would write it in the tests using Play JSON.
 
 ## How to use it?
-```
+```bash
 python json_to_playjson.py '{"total":[17,17],"3":[0,0],"2":[0,0],"1":[17,17],"7":[0,0],"6":[0,0],"5":[0,0],"4":[0,0],"8":[0,0]}'
 ```
 
-This will put the output on the stdout.
+This will output on the stdout.
 
 You might want to work with files if your json is big.
-```
+```bash
 python json_to_playjson.py `cat test.json` > test.out
 ```
 
 ### Sample Output
-```
+```java
 Json.obj() 
 	.add("1", Json.arr() 
 		.add(17)
@@ -49,7 +49,7 @@ Json.obj()
 ```
 
 Then you can use this in your tests like this.
-```
+```java
     @Test
     @LoadFixture(SampleFixture.class)
     public void sampleTest() {
