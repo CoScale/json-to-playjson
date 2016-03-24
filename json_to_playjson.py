@@ -1,5 +1,5 @@
 import json, sys
-
+from decimal import Decimal
 
 def convert_dict_to_playjson(json, indentation):
     if isinstance(json, dict):
@@ -30,13 +30,13 @@ def convert_dict_to_playjson(json, indentation):
         sys.stdout.write(".build()")
         indentation -= 1
     elif isinstance(json, basestring):
-        sys.stdout.write('"' + json + '"')
+        sys.stdout.write('"' + json.replace("\\", "\\\\") + '"')
     else:
         sys.stdout.write(str(json))
     return
 
 try:
-    decoded = json.loads(sys.argv[1])
+    decoded = json.loads(sys.argv[1], parse_float=Decimal)
     convert_dict_to_playjson(decoded, 0)
     print ""
 except (ValueError, KeyError, TypeError):
